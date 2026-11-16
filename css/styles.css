@@ -1,0 +1,191 @@
+/* ===== Control de Gastos — estilos ===== */
+:root {
+  --primario: #1f3864;
+  --primario-claro: #2e5597;
+  --fondo: #f3f5f9;
+  --panel: #ffffff;
+  --texto: #1d2433;
+  --suave: #5f6b7d;
+  --borde: #dde2ea;
+  --error: #c0392b;
+  --exito: #1e8449;
+  --radio: 10px;
+  --sombra: 0 2px 8px rgba(20, 30, 60, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.encabezado {
+  background: var(--primario);
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+.encabezado h1 { margin: 0 0 0.25rem; font-size: 1.8rem; }
+.encabezado p { margin: 0; opacity: 0.85; }
+
+.contenedor { max-width: 1150px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+
+/* ----- Resumen ----- */
+.resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.tarjeta {
+  background: var(--panel);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1rem 1.2rem;
+  border-left: 5px solid var(--primario-claro);
+}
+.tarjeta__etiqueta { display: block; color: var(--suave); font-size: 0.85rem; }
+.tarjeta__valor { font-size: 1.5rem; }
+.tarjeta__valor--texto { font-size: 1.25rem; }
+
+/* ----- Paneles ----- */
+.columnas { display: grid; grid-template-columns: 340px 1fr; gap: 1.25rem; align-items: start; }
+.panel {
+  background: var(--panel);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.25rem;
+  min-width: 0;
+}
+.panel h2 { margin-top: 0; color: var(--primario); font-size: 1.25rem; }
+.panel h3 { margin: 1.5rem 0 0.75rem; font-size: 1rem; color: var(--primario); }
+
+/* ----- Formulario ----- */
+.campo { margin-bottom: 0.9rem; }
+.campo label { display: block; font-weight: 600; margin-bottom: 0.25rem; font-size: 0.92rem; }
+
+input, select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  font: inherit;
+  background: #fff;
+  color: inherit;
+}
+input:focus, select:focus { outline: 2px solid var(--primario-claro); outline-offset: 1px; border-color: transparent; }
+.invalido { border-color: var(--error); background: #fdf1f0; }
+.error { color: var(--error); font-size: 0.82rem; min-height: 1em; display: block; }
+
+form.editando { outline: 2px dashed #e67e22; outline-offset: 8px; border-radius: 4px; }
+
+.acciones { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.btn {
+  border: none;
+  border-radius: 7px;
+  padding: 0.6rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn--primario { background: var(--primario); color: #fff; }
+.btn--primario:hover { background: var(--primario-claro); }
+.btn--secundario { background: #e6e9ef; color: var(--texto); }
+.btn--peligro { background: transparent; color: var(--error); border: 1px solid var(--error); margin-top: 1rem; }
+.btn--peligro:hover { background: var(--error); color: #fff; }
+
+/* ----- Herramientas: búsqueda, filtro y orden ----- */
+.herramientas { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(190px, 1fr) minmax(150px, 0.8fr); gap: 0.5rem; }
+.info { color: var(--suave); font-size: 0.88rem; margin: 0.5rem 0; min-height: 1.2em; }
+
+/* ----- Tabla ----- */
+.tabla-envoltura { overflow-x: auto; }
+.tabla { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+.tabla th, .tabla td { padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--borde); text-align: left; }
+.tabla th { background: #eef1f6; color: var(--primario); font-size: 0.85rem; }
+.tabla tbody tr:hover { background: #f8f9fc; }
+.num { text-align: right !important; white-space: nowrap; }
+.celda-acciones { white-space: nowrap; text-align: right; }
+
+.etiqueta {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color);
+  background: color-mix(in srgb, var(--color) 14%, white);
+}
+
+.btn-icono {
+  border: 1px solid var(--borde);
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+}
+.btn-icono:hover { border-color: var(--primario-claro); color: var(--primario-claro); }
+.btn-icono--peligro:hover { border-color: var(--error); color: var(--error); }
+
+.vacio { text-align: center; color: var(--suave); padding: 1.5rem 0; }
+
+/* ----- Barras por categoría ----- */
+.barras { list-style: none; padding: 0; margin: 0; }
+.barras li { margin-bottom: 0.7rem; }
+.barras__texto { display: flex; justify-content: space-between; font-size: 0.85rem; }
+.barras__fondo { background: #eef1f6; border-radius: 999px; height: 8px; overflow: hidden; }
+.barras__relleno { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
+
+/* ----- Aviso flotante ----- */
+.aviso {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translate(-50%, 150%);
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: var(--sombra);
+  transition: transform 0.3s ease;
+  z-index: 10;
+  visibility: hidden;
+}
+.aviso--visible { transform: translate(-50%, 0); visibility: visible; }
+.aviso--exito { background: var(--exito); }
+.aviso--error { background: var(--error); }
+
+.oculto { display: none !important; }
+
+.pie { text-align: center; color: var(--suave); font-size: 0.85rem; padding: 1rem; }
+
+/* ----- Responsivo ----- */
+@media (max-width: 860px) {
+  .columnas { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1000px) and (min-width: 861px), (max-width: 600px) {
+  .herramientas { grid-template-columns: 1fr 1fr; }
+  .herramientas input { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+  .herramientas { grid-template-columns: 1fr; }
+
+  /* La tabla se convierte en tarjetas */
+  .tabla thead { display: none; }
+  .tabla, .tabla tbody, .tabla tr, .tabla td { display: block; width: 100%; }
+  .tabla tr { border: 1px solid var(--borde); border-radius: 8px; margin-bottom: 0.75rem; padding: 0.4rem 0.6rem; }
+  .tabla td { border: none; padding: 0.25rem 0; display: flex; justify-content: space-between; gap: 1rem; }
+  .tabla td::before { content: attr(data-titulo); font-weight: 600; color: var(--suave); }
+  .tabla td.num { text-align: right; }
+  .celda-acciones { justify-content: flex-end !important; padding-top: 0.5rem !important; }
+  .celda-acciones .btn-icono { margin-left: 0.4rem; }
+}
